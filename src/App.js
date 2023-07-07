@@ -1,6 +1,5 @@
 import './App.css';
 import Header from "./Components/Header";
-import Kiara from './Components/Kiara';
 import AboutMe from './Components/AboutMe';
 import Skills from './Components/Skills';
 import Slider from "./Components/Slider";
@@ -12,7 +11,6 @@ function App() {
     <div className="App">
       <Testing/>
       <Header/>
-      <Kiara/>
       <AboutMe/>
       <Skills/>
       <Footer/>
