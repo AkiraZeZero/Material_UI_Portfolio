@@ -92,6 +92,7 @@ const Skills = () => {
               </Box>
             </Grid>
           </Stack>
+            <br />
         </Container>
       </Box>
     </div>
