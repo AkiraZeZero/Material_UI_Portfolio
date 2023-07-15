@@ -13,6 +13,7 @@ function App() {
       <Header/>
       <AboutMe/>
       <Skills/>
+      <Slider/>
       <Footer/>
     </div>
   );

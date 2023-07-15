@@ -1,41 +1,113 @@
-import Akira from "../Images/Kiara.jpg";
-import { Container, Box, Stack } from "@mui/system";
+import * as React from "react";
+// import PropTypes from 'prop-types';
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import CssBaseline from "@mui/material/CssBaseline";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Box from "@mui/material/Box";
+// import Container from '@mui/material/Container';
+import Slide from "@mui/material/Slide";
 import { Avatar } from "@mui/material";
-import MuiGrid from '@mui/material/Grid';
-import { styled } from '@mui/material/styles';
+import MuiGrid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import { Stack } from "@mui/material";
+import PetsOutlinedIcon from "@mui/icons-material/PetsOutlined";
+import BrushOutlinedIcon from "@mui/icons-material/BrushOutlined";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 
-const Kiara = () => {
+function HideOnScroll(props) {
+  const { children, window } = props;
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({
+    target: window ? window() : undefined,
+  });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
+// HideOnScroll.propTypes = {
+//   children: PropTypes.element.isRequired,
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * You won't need it on your project.
+//    */
+//   window: PropTypes.func,
+// };
+
+export default function HideAppBar(props) {
   const Grid = styled(MuiGrid)(({ theme }) => ({
-    width: '100%',
+    width: "100%",
     ...theme.typography.body2,
     '& [role="separator"]': {
-      margin: theme.spacing(0, 2),
+      margin: theme.spacing(2, 2),
     },
   }));
   return (
-    <Grid container>
-    <Box>
-      <Container
-        maxWidth="xs"
-        className="kiaraSection"
-        sx={{ borderRadius: "16px" }}
-      >
-        This is a test playground!
-        <Stack direction={"row"}>
-          <Avatar alt="Kiara" src={Akira} sx={{ width: 100, height: 100 }} />
-          <Container>container in stack</Container>
-          <Container>Another container in the stack</Container>
-        </Stack>
-        <Stack direction={"row"}>
-          <Container>Stack number 2</Container>
-          <Container>Another container stack</Container>
-          <Container>And the 3rd last stack item</Container>
-        </Stack>
-        <Box>a box outside of the stack</Box>
-      </Container>
-      <Container>a box w a container inside</Container>
-    </Box></Grid>
-  );
-};
+    <React.Fragment>
+      <CssBaseline />
+      <HideOnScroll {...props}>
+        <AppBar>
+          <Toolbar>
+            <Typography variant="h6" component="div">
+              <Box>
+                <Grid container direction={"row"}>
+                  <Avatar
+                    maxWidth="sm"
+                    alt="Kiara"
+                    src="KO"
+                    sx={{
+                      width: 50,
+                      height: 50,
+                      mx: "auto",
+                      m: 2,
+                    }}
+                  />
+                  <h2>✨ Kiara The Web Dev ✨</h2>
+                  <Stack direction="row" sx={{ ml: 25 }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{ borderRadius: 100 }}
+                    >
+                      <BrushOutlinedIcon fontSize="small" />
+                    </Button>
 
-export default Kiara;
+                    <Divider />
+                    <Button
+                      size="small"
+                      variant="contained"
+                      color="primary"
+                      startIcon={<PetsOutlinedIcon/>}
+                      sx={{ borderRadius: 25 }}
+                    >
+
+                    </Button>
+                    <Divider />
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      sx={{ borderRadius: 100 }}
+                    >
+                      <AccessTimeOutlinedIcon fontSize="small" />
+                    </Button>
+                    <Divider />
+                  </Stack>
+                </Grid>
+              </Box>
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+      <Toolbar />
+    </React.Fragment>
+  );
+}
