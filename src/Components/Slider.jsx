@@ -1,68 +1,114 @@
-import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import gg from "../Images/gg.png"
-import { Box, Container } from '@mui/system';
+import * as React from "react";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import { Box, Container } from "@mui/system";
+import MuiGrid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import gg from "../Images/gg.png";
+import candles from "../Images/candles.jpg";
+import chicky from "../Images/chicky.jpg";
+import bookNook from "../Images/bookNook.jpg";
+import cozyCandles from "../Images/cozyCandles.jpg";
+import dice from "../Images/dice.jpg";
+import dreamCave from "../Images/dreamCave.jpg";
+import dreamCave2 from "../Images/dreamCave2.jpg";
+import dreamCave3 from "../Images/dreamCave3.jpg";
+import dreamCave4 from "../Images/dreamCave4.jpg";
+import rainbowCave from "../Images/rainbowCave.jpg";
+import rainbowCave2 from "../Images/rainbowCave2.jpg";
+import rainbowCave3 from "../Images/rainbowCave3.jpg";
+import rainbowCave4 from "../Images/rainbowCave4.jpg";
 
-function srcset(image, size, rows = 2, cols = 1) {
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${
-      size * rows
-    }&fit=crop&auto=format&dpr=2 2x`,
-  };
-}
-
-export default function QuiltedImageList() {
+export default function Slider() {
+  const Grid = styled(MuiGrid)(({ theme }) => ({
+    width: "100%",
+    ...theme.typography.body2,
+    '& [role="separator"]': {
+      margin: theme.spacing(0, 2),
+    },
+  }));
   return (
-    <Box  classname="sliderBox" maxWidth="md">
-<Container classname="sliderContainer">
-
-
-    
-    <ImageList
-      sx={{ width: 750, height: 450 }}
-      variant="quilted"
-      cols={2}
-      rowHeight={121}
-    >
-      {itemData.map((item) => (
-        <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
-          <img
-            {...srcset(item.img, 121, item.rows, item.cols)}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
-    </Container>
+    <Box>
+      <br />
+      <Container
+        className="sliderBox"
+        maxWidth="lg"
+        sx={{
+            borderRadius: "16px",
+        }}
+        >
+        <Box
+          sx={{
+              px: 5,
+              py: 3,
+            }}
+            >
+            <h2>Here is some of my AI art I've created</h2>
+          <ImageList sx={{ width: 1050}} cols={4}>
+            {itemData.map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Box>
+      </Container>
     </Box>
   );
 }
 
 const itemData = [
   {
-    img: gg,
-    title: 'gg',
-    rows: 3,
-    cols: 4,
+    img: candles,
+    title: "Camera",
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    rows: 4
+    img: bookNook,
+    title: "Coffee",
   },
   {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    rows: 3,
-    cols:3
+    img: cozyCandles,
+    title: "Hats",
   },
   {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
-    cols: 4,
-    rows: 3
+    img: dice,
+    title: "Honey",
+  },
+  {
+    img: dreamCave,
+    title: "Basketball",
+  },
+  {
+    img: dreamCave2,
+    title: "Fern",
+  },
+  {
+    img: dreamCave3,
+    title: "Mushrooms",
+  },
+  {
+    img: dreamCave4,
+    title: "Tomato basil",
+  },
+  {
+    img: rainbowCave,
+    title: "Sea star",
+  },
+  {
+    img: rainbowCave2,
+    title: "Bike",
+  },
+  {
+    img: rainbowCave3,
+    title: "Bike",
+  },
+  {
+    img: rainbowCave4,
+    title: "Bike",
   },
 ];

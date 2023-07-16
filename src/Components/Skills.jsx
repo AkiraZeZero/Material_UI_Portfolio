@@ -22,7 +22,7 @@ const Skills = () => {
             borderRadius: "16px",
           }}
         >
-          <h3>Skills!</h3>
+          <h3>My Skills!</h3>
           <Stack direction={"row"}>
             <Grid>
               <Box sx={{ textAlign: "start" }}>
